@@ -1,0 +1,36 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+int main () {
+	int N;
+	cin>>N;
+
+	vector<int>nums(N,0);
+
+	for(int i=0;i<N;i++){
+		cin>>nums[i];
+	}
+
+
+ vector<int>ans;
+
+ ans.push_back(nums[0]);
+
+
+
+	for(int i=1;i<N;i++){
+		if(nums[i]!=nums[i-1]){
+
+  ans.push_back(nums[i]);}
+
+	}
+	cout<<ans.size()<<endl;
+
+	for(int X:ans){
+		cout<<X<<" ";
+	}
+
+	
+
+	return 0;
+}
