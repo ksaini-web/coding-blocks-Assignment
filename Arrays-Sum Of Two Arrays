@@ -1,0 +1,51 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+vector<int> sumArrays(vector<int> arr1, vector<int> arr2, int N, int M) {
+    int i = N - 1;
+    int j = M - 1;
+    int carry = 0;
+
+    vector<int> ans;
+
+    // Add digit by digit from the end
+    while (i >= 0 || j >= 0 || carry) {
+        int d1 = (i >= 0) ? arr1[i] : 0;
+        int d2 = (j >= 0) ? arr2[j] : 0;
+
+        int s = d1 + d2 + carry;
+        ans.push_back(s % 10);
+        carry = s / 10;
+
+        i--;
+        j--;
+    }
+
+    reverse(ans.begin(), ans.end());
+    return ans;
+}
+
+int main() {
+    int N, M;
+    cin >> N;
+
+    vector<int> arr1(N);
+    for (int i = 0; i < N; i++)
+        cin >> arr1[i];
+
+    cin >> M;
+
+    vector<int> arr2(M);
+    for (int i = 0; i < M; i++)
+        cin >> arr2[i];
+
+    vector<int> result = sumArrays(arr1, arr2, N, M);
+
+    for (int x : result)
+        cout << x << ", ";
+    cout << "END";
+
+    return 0;
+}
