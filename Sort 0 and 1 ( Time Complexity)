@@ -1,0 +1,42 @@
+//Take as input N, a number. Take N more inputs to form an array.
+// The array contains only 0 and 1. Sort the array in a single scan
+#include<iostream>
+#include<vector>
+using namespace std;
+int main()
+{
+int N;
+cin>>N;
+
+vector<int>arr(N) ;
+
+for(int i=0;i<N;i++) {
+
+    cin>>arr[i];
+} 
+
+int i=0,j=N-1;
+
+while(i<j){
+
+    if(arr[i]==0){
+
+        i++;
+    
+    }
+    else if (arr[j]==1){
+
+        j--;
+        
+    }
+    else{
+        swap(arr[i],arr[j]);
+        i++;
+        j--;
+    }
+}
+for(int x:arr){
+
+    cout<<x<<" ";
+}return 0;
+}
